@@ -1,0 +1,113 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet"  href="{% static 'css_file/home.css' %}">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>HOME | Alchringa Connect</title>
+</head>
+<body>
+	<!-- header content -->
+	<div class="header">
+		<div class="logo_img">
+			<img src="{% static 'sign_logo/logo.png' %} "  >
+		</div>
+		<div class="logo_txt">
+			<p class="logo_txt_alcher">Alcheringa <samp>Connect</samp></p>
+		</div>
+	</div>
+	<!-- main feed content -->
+	<div class="feed">
+
+        {% for post in posts%}
+		    <!-- diff posts -->
+			<div class="post">
+				<!-- post header -->
+				<a href="person1.html">
+					<div class="post_header">
+					<div class="post_header_photo">
+						<img src="{% static 'profile_photo/profile.jpg' %}">
+					</div>
+					<div class="post_header_name">
+						<!-- <p></p> -->
+						<span>username</span>
+					</div> 
+				</div>
+				</a>
+				<!-- post img -->
+				<div class="post_img">
+					<img src="{%static post.img_link%} ">
+				</div>
+				<!-- post responce bar -->
+				<div class="post_responces">
+					<div class="like_button">
+						<button ><img src=" {% static 'sign_logo/like.png' %} "></button>
+						<!-- <h3> <br></h3> -->
+						<a href="like_count.html">{{post.like_count}}</a>
+					</div>
+					<div class="save_button">
+						<!-- <button></button> -->
+						<img src=" {% static 'sign_logo/save.png' %} ">
+					</div>
+					
+				</div>
+			</div>
+
+		{% endfor %}
+
+	</div>
+	<!-- profile content -->
+	<div class="profile_box">
+		<div class="profile">
+			<div class="profile_heading">
+				<p >My Profile</p>
+				<a href=" {% url 'project-logout' %}"><img src=" {% static 'sign_logo/logout.png' %} "></a>
+			</div>
+			<div class="profile_info">
+				<div class="profile_name">
+					<div class="profile_img">
+						<img src=" {% static 'profile_photo/profile.jpg' %}">
+					</div>
+					
+					<div class="info">
+						<p class="user_name">username</p>
+						<br>
+						<p class="person_name">Preson name</p>
+						<p></p>
+					</div>
+					
+				</div>
+				<div class="profile_bio">
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
+						consequat. Duis aute irure dolor in reprehenderit 
+					</p>
+				</div>
+				<div class="profile_button">
+					<div class="hmm">
+						<a href="{% url 'project-post' %}">
+							<img src=" {% static 'sign_logo/add.png' %} "><p>My post</p>
+						</a>	
+					</div>
+					<div class="hmm">
+						<a href="saved_posts.html">
+							<img src=" {% static 'sign_logo/save.png' %} " class="save"><p>Saved posts</p>
+						</a>	
+					</div>
+				</div>
+				<br>
+			</div>
+			
+		</div>
+		<div class="new_box">
+			<div class="hmm">
+				<a href="{% url 'project-new-post' %}">
+					<img src=" {% static 'sign_logo/add.png' %} "><p>Create a new post</p>
+				</a>	
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
